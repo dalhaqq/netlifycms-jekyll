@@ -1,0 +1,184 @@
+backend:
+  name: github
+  repo: dalhaqq/blog
+
+media_folder: "assets/images"
+
+collections:
+  - name: "settings"
+    label: "Settings"
+    files:
+      - label: "General"
+        name: "general"
+        file: "_config.yml"
+        fields:
+          - label: "Site name"
+            name: "name"
+            widget: string
+          - label: "Site title"
+            name: "title"
+            widget: string
+          - label: "Site description"
+            name: "description"
+            widget: text
+          - label: "Site icon"
+            name: "favicon"
+            widget: image
+          - label: "Site logo"
+            name: "logo"
+            widget: image
+          - label: "Enable lazyloading"
+            name: lazyimages
+            widget: boolean
+          - label: "Enable AdSense"
+            name: adsense
+            widget: boolean
+          - label: "AdSense ID"
+            name: "adsense-data-ad-client"
+            widget: string
+          - label: "AdSense Slot"
+            name: "adsense-data-ad-slot"
+            widget: string
+          - label: "Post per page"
+            name: "paginate"
+            widget: number
+          - label: "Disqus shortname"
+            name: "disqus"
+            widget: string
+          - label: "Mailchimp URL"
+            name: "mailchimp-list"
+            widget: string
+            required: false
+  - label: "Posts"
+    name: "posts"
+    label_singular: "post"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Author"
+        name: "author"
+        widget: "relation"
+        collection: authors
+        searchFields: ["name"]
+        valueField: "name"
+        displayFields: ["name"]
+      - label: "Categories"
+        name: "categories"
+        widget: "list"
+        default: ["uncategorized"]
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+      - label: "Image"
+        name: "image"
+        widget: image
+        required: false
+      - label: "Description"
+        name: "description"
+        widget: "text"
+        required: false
+      - label: "Mark post as featured"
+        name: "featured"
+        widget: "boolean"
+        default: false
+      - label: "Hide post from index"
+        name: "hidden"
+        widget: "boolean"
+        default: false
+      - label: "Rating"
+        name: "rating"
+        valueType: "float"
+        min: 0.0
+        max: 5.0
+        required: false
+      - label: "Enable comments"
+        name: "comments"
+        widget: "boolean"
+        default: true
+      - label: "Content"
+        name: "body"
+        widget: "markdown"
+      - label: "Layout"
+        name: "layout"
+        widget: "hidden"
+        default: "post"
+  - label: "Pages"
+    name: "pages"
+    label_singular: "page"
+    description: "Please do not edit Categories and Tags page"
+    folder: "_pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Layout"
+        name: "layout"
+        widget: "hidden"
+        default: "page"
+      - label: "Permalink"
+        name: "permalink"
+        widget: "string"
+        hint: "include the backslash (/) before slug"
+      - label: "Enable comments"
+        name: "comments"
+        widget: "boolean"
+        default: true
+      - label: "Content"
+        name: "body"
+        widget: "markdown"
+  - label: "Authors"
+    name: "authors"
+    folder: "_authors"
+    create: true
+    label_singular: author
+    slug: "{{name}}"
+    fields:
+      - label: "Name"
+        name: name
+        widget: "string"
+      - label: "Display Name"
+        name: display_name
+        widget: "string"
+      - label: "Gravatar ID"
+        name: gravatar
+        widget: "string"
+        required: false
+      - label: "Avatar Image"
+        name: avatar
+        widget: "image"
+        required: false
+      - label: "Email"
+        name: email
+        widget: "string"
+      - label: "Website URl"
+        name: web
+        widget: "string"
+        required: false
+      - label: "Twitter URl"
+        name: twitter
+        widget: "string"
+        required: false
+      - label: "Description"
+        name: description
+        widget: "text"
+        required: false
+  - label: "Menus"
+    name: "menus"
+    folder: "_menus"
+    create: true
+    label_singular: menu
+    slug: "{{name}}"
+    fields:
+      - label: "Name"
+        name: "name"
+        widget: "string"
+      - label: "Target Link"
+        name: "link"
+        widget: "string"

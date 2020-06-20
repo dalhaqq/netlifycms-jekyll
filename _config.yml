@@ -1,0 +1,50 @@
+google_analytics: UA-46278016-1
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-archives
+name: Abdalhaqq MS
+title: Abdalhaqq MS
+description: |-
+  
+  Personal site of Abdalhaqq MS
+favicon: assets/images/logo.png
+logo: assets/images/logo.png
+lazyimages: true
+adsense: false
+adsense-data-ad-client: ca-pub-3412143450191416
+adsense-data-ad-slot: "1363087678"
+disqus: abdalhaqq
+
+include:
+  - _pages
+permalink: /:title/
+paginate_path: /page:num/
+markdown: kramdown
+jekyll-archives:
+  enabled:
+    - categories
+  layout: archive
+  permalinks:
+    category: /category/:name/
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+paginate: 6
+exclude:
+  - changelog.md
+  - LICENSE.txt
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+mailchimp-list: ""
+baseurl: ""
+
+collections:
+  - authors
+  - menus
